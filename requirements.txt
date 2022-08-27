@@ -49,7 +49,7 @@ geopy==2.2.0
 humanize==4.3.0
 pyrogram==2.0.40
 python-arq==6.0.5
-aiohttp==3.7.3
+aiohttp==3.7.4
 carbonnow
 search_engine_parser
 googletrans
@@ -67,7 +67,7 @@ pytimeparse
 APScheduler==3.9.1
 CloudScraper
 dnspython==2.2.1
-async-timeout==3.9.1
+async-timeout==3.0.1
 psycopg2
 pycountry
 opencv-python-headless==4.5.4.60
