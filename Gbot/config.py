@@ -4,10 +4,7 @@ import os
 
 
 
-def get_user_list(config, key):
-    with open('{}/Bot/{}'.format(os.getcwd(), config),
-              'r') as json_file:
-        return json.load(json_file)[key]
+
 
 
 # Create a new config.py or rename this to config.py file in same dir and import, then extend this class.
@@ -38,15 +35,6 @@ class Config(object):
     BOT_USERNAME = "udanpirappumusic_bot"
     MONGO_DB_URI = "mongodb+srv://logesh:logesh@cluster0.z75dh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
     BOT_ID = ""
-    
-    DRAGONS = get_user_list('elevated_users.json', 'sudos')
-
-    DEV_USERS = get_user_list('elevated_users.json', 'devs')
-    ##List of id's (not usernames) for users which are allowed to gban, but can also be banned.
-    DEMONS = get_user_list('elevated_users.json', 'supports')
-    #List of id's (not usernames) for users which WONT be banned/kicked by the bot.
-    TIGERS = get_user_list('elevated_users.json', 'tigers')
-    WOLVES = get_user_list('elevated_users.json', 'whitelists')
     DONATION_LINK = None  # EG, paypal
     CERT_PATH = None
     PORT = 5000
