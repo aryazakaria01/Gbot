@@ -216,4 +216,5 @@ async def _(event):
             await event.reply(file=out_file)
 
 
-QUEEN_PTB.add_handler(DisableAbleCommandHandler("weather", weather, block=False))
+QUEEN_PTB.add_handler(
+    DisableAbleCommandHandler("weather", weather, block=False))

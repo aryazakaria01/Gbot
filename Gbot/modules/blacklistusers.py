@@ -159,10 +159,19 @@ def __user_info__(user_id):
 
 
 QUEEN_PTB.add_handler(
-    CommandHandler("ignore", unbl_user, filters=filters.User(OWNER_ID), block=False))
+    CommandHandler("ignore",
+                   unbl_user,
+                   filters=filters.User(OWNER_ID),
+                   block=False))
 QUEEN_PTB.add_handler(
-    CommandHandler("notice", unbl_user, filters=filters.User(OWNER_ID), block=False))
+    CommandHandler("notice",
+                   unbl_user,
+                   filters=filters.User(OWNER_ID),
+                   block=False))
 QUEEN_PTB.add_handler(
-    CommandHandler("ignoredlist", bl_users, filters=filters.User(OWNER_ID), block=False))
+    CommandHandler("ignoredlist",
+                   bl_users,
+                   filters=filters.User(OWNER_ID),
+                   block=False))
 
 __mod_name__ = "[✨ ʙʟᴀᴄᴋʟɪꜱᴛɪɴɢ ᴜꜱᴇʀꜱ ✨]"

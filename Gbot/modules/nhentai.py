@@ -53,9 +53,8 @@ def nhentai_data(noombers):
 
     post_content = "".join(f"<img src={link}><br>" for link in links)
 
-    post = telegraph.create_page(
-        f"{title}",
-        html_content=post_content,
-        author_name="@Gbot",
-        author_url="https://telegram.dog/Gbot")
+    post = telegraph.create_page(f"{title}",
+                                 html_content=post_content,
+                                 author_name="@Gbot",
+                                 author_url="https://telegram.dog/Gbot")
     return title, tags, artist, total_pages, post["url"], links[0]

@@ -59,4 +59,5 @@ async def wall(update: Update, context: CallbackContext) -> None:
             timeout=60,
         )
 
+
 QUEEN_PTB.add_handler(DisableAbleCommandHandler("wall", wall, block=False))
