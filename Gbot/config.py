@@ -1,3 +1,4 @@
+
 import json
 import os
 
@@ -72,3 +73,4 @@ class Production(Config):
 
 class Development(Config):
     LOGGER = True
+
