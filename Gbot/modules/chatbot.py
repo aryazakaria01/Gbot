@@ -113,8 +113,7 @@ async def chatbot(update: Update, context: CallbackContext) -> None:
                              )
 
 
-async def list_chatbot_chats(update: Update,
-                             context: CallbackContext) -> None:
+async def list_chatbot_chats(update: Update, context: CallbackContext) -> None:
     text = "<b>AI-Enabled Chats</b>\n"
     for chat in CHATBOT_ENABLED_CHATS:
         x = await context.bot.get_chat(chat)
@@ -131,8 +130,7 @@ Chatbot utilizes the Brainshop's API and allows Qᴜᴇᴇɴ ʙᴏᴛ 愛 to tal
 ➛ /chatbot*:* Shows chatbot control panel
 """
 
-QUEEN_PTB.add_handler(CommandHandler("chatbot", chatbot_toggle,
-                                        block=False))
+QUEEN_PTB.add_handler(CommandHandler("chatbot", chatbot_toggle, block=False))
 QUEEN_PTB.add_handler(
     CallbackQueryHandler(chatbot_handle_callq,
                          pattern=r"chatbot_",

@@ -57,20 +57,27 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 8:
 ENV = bool(os.environ.get("ENV", False))
 
 if ENV:
-    TOKEN = os.environ.get("TOKEN", "5558413169:AAEP69-SWLjh2ftdpj0-v2aG9aN31ANB1Ag")
+    TOKEN = os.environ.get("TOKEN",
+                           "5558413169:AAEP69-SWLjh2ftdpj0-v2aG9aN31ANB1Ag")
 
     try:
-        OWNER_ID = int(os.environ.get("OWNER_ID" , "5523873067"))
+        OWNER_ID = int(os.environ.get("OWNER_ID", "5523873067"))
     except ValueError:
         raise Exception("Your OWNER_ID env variable is not a valid integer.")
 
-    JOIN_LOGGER = os.environ.get("JOIN_LOGGER" , "-1001351412926")
-    OWNER_USERNAME = os.environ.get("OWNER_USERNAME" , "ROWDY_OF_PLUS")
+    JOIN_LOGGER = os.environ.get("JOIN_LOGGER", "-1001351412926")
+    OWNER_USERNAME = os.environ.get("OWNER_USERNAME", "ROWDY_OF_PLUS")
     BOT_USERNAME = "udanpirappumusic_bot"
 
     try:
-        SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "5523873067").split()}
-        DEV_USERS = {int(x) for x in os.environ.get("DEV_USERS", "5523873067").split()}
+        SUDO_USERS = {
+            int(x)
+            for x in os.environ.get("SUDO_USERS", "5523873067").split()
+        }
+        DEV_USERS = {
+            int(x)
+            for x in os.environ.get("DEV_USERS", "5523873067").split()
+        }
     except ValueError:
         raise Exception(
             "Your sudo or dev users list does not contain valid integers.")
@@ -111,18 +118,21 @@ if ENV:
     WEBHOOK = bool(os.environ.get("WEBHOOK", False))
     URL = os.environ.get(
         "URL", ""
-    )  # If You Deploy On Heraku. [URL PERTEN:- https://{App Name}.herokuapp.com/ || 
+    )  # If You Deploy On Heraku. [URL PERTEN:- https://{App Name}.herokuapp.com/ ||
     PORT = int(os.environ.get("PORT", 8443))
     CUSTOM_CMD = os.environ.get("CUSTOM_CMD", False)
     API_ID = os.environ.get(
-        "API_ID" , "17881110")  # Bot Owner's API_ID (From:- https://my.telegram.org/auth)
+        "API_ID",
+        "17881110")  # Bot Owner's API_ID (From:- https://my.telegram.org/auth)
     API_HASH = os.environ.get(
-        "API_HASH" , "41d02175c2858cae93b745ffa4aaed24"
+        "API_HASH", "41d02175c2858cae93b745ffa4aaed24"
     )  # Bot Owner's API_HASH (From:- https://my.telegram.org/auth)
     DATABASE_URL = os.environ.get(
-        "DATABASE_URL" , "postgres://weoqhnsa:djAEOjRGc-S12WNOc5n-OecygFuA3eCi@jelani.db.elephantsql.com/weoqhnsa"
+        "DATABASE_URL",
+        "postgres://weoqhnsa:djAEOjRGc-S12WNOc5n-OecygFuA3eCi@jelani.db.elephantsql.com/weoqhnsa"
     )  # Any SQL Database Link (RECOMMENDED:- PostgreSQL & https://www.elephantsql.com)
-    DONATION_LINK = os.environ.get("DONATION_LINK", "https://t.me/ROWDY_OF_PLUS")  # Donation Link (ANY)
+    DONATION_LINK = os.environ.get(
+        "DONATION_LINK", "https://t.me/ROWDY_OF_PLUS")  # Donation Link (ANY)
     LOAD = os.environ.get("LOAD", "").split()  # Don't Change
     NO_LOAD = os.environ.get("NO_LOAD", "translation").split()  # Don't Change
     DEL_CMDS = bool(os.environ.get("DEL_CMDS", False))  # Don't Change
@@ -134,30 +144,36 @@ if ENV:
     TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY",
                                              "./")  # Don't Change
     CASH_API_KEY = os.environ.get(
-        "CASH_API_KEY" , "PUWW57GBXS052JS1")  # From:- https://www.alphavantage.co/support/#api-key
+        "CASH_API_KEY", "PUWW57GBXS052JS1"
+    )  # From:- https://www.alphavantage.co/support/#api-key
     TIME_API_KEY = os.environ.get(
-        "TIME_API_KEY" , "UGJE9H6VIU03")  # From:- https://timezonedb.com/api
+        "TIME_API_KEY", "UGJE9H6VIU03")  # From:- https://timezonedb.com/api
     WALL_API = os.environ.get(
         "WALL_API")  # From:- https://wall.alphacoders.com/api.php
     REM_BG_API_KEY = os.environ.get(
-        "REM_BG_API_KEY" , "rjhL9z7GH3ou9PMNVLneJXqo")  # From:- https://www.remove.bg/
+        "REM_BG_API_KEY",
+        "rjhL9z7GH3ou9PMNVLneJXqo")  # From:- https://www.remove.bg/
     OPENWEATHERMAP_ID = os.environ.get(
         "OPENWEATHERMAP_ID")  # From:- https://openweathermap.org/api
     GENIUS_API_TOKEN = os.environ.get(
         "GENIUS_API_TOKEN")  # From:- http://genius.com/api-clients
     MONGO_DB_URL = os.environ.get(
-        "MONGO_DB_URL" , "mongodb+srv://logesh:logesh@cluster0.z75dh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")  # MongoDB URL (From:- https://www.mongodb.com/)
+        "MONGO_DB_URL",
+        "mongodb+srv://logesh:logesh@cluster0.z75dh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    )  # MongoDB URL (From:- https://www.mongodb.com/)
     REDIS_URL = os.environ.get(
         "REDIS_URL"
     )  # REDIS URL (Take it from redislabs.com and the format should be redis://username:password@publicendpoint:port/)
     SUPPORT_CHAT = os.environ.get(
-        "SUPPORT_CHAT" , "https://t.me/gangs_for_udanpirappu"
+        "SUPPORT_CHAT", "https://t.me/gangs_for_udanpirappu"
     )  # Support Chat Group Link (Use @Black_Knights_Union_Support || Dont Use https://telegram.dog/Black_Knights_Union_Support)
     STRING_SESSION = os.environ.get(
-        "STRING_SESSION","1BJWap1wBu4PHJtLqjwzJwKiORgDiDQ378EL06z4TtLyWuGGpvrMthkhxoZpNsJs9B1WWh5BHb3pXMtcgi3ScUfaoOCZyKP_b6ujuqYrC-lMNCNxVAnE1n0vk-aNgVm2LTnKExjLRj3F_VGaDB1gTvfsVxszOnMLKpA2mxpU62T2w-e_SExbOsSflydoKZET_IZ7Rlx-Gy5v13WTbHVH7HevZ06TrChFpfCrJSwfLgGKHcZsxgRCI7IyiokV53gbJ5g7Sd1s47EzEK3YKOeCS3jppNCCRNCB3ua8ncIS2XaABJAVkiJ4MwCMkupuyNCgMA38l-X0SNJu4aLqpwHl6ovaQ-Za0KmE="
+        "STRING_SESSION",
+        "1BJWap1wBu4PHJtLqjwzJwKiORgDiDQ378EL06z4TtLyWuGGpvrMthkhxoZpNsJs9B1WWh5BHb3pXMtcgi3ScUfaoOCZyKP_b6ujuqYrC-lMNCNxVAnE1n0vk-aNgVm2LTnKExjLRj3F_VGaDB1gTvfsVxszOnMLKpA2mxpU62T2w-e_SExbOsSflydoKZET_IZ7Rlx-Gy5v13WTbHVH7HevZ06TrChFpfCrJSwfLgGKHcZsxgRCI7IyiokV53gbJ5g7Sd1s47EzEK3YKOeCS3jppNCCRNCB3ua8ncIS2XaABJAVkiJ4MwCMkupuyNCgMA38l-X0SNJu4aLqpwHl6ovaQ-Za0KmE="
     )  # Telethon Based String Session (2nd ID) [ From https://repl.it/@SpEcHiDe/GenerateStringSession ]
-    APP_ID = os.environ.get("APP_ID" , "17881110")  # 2nd ID
-    APP_HASH = os.environ.get("APP_HASH" , "41d02175c2858cae93b745ffa4aaed24")  # 2nd ID
+    APP_ID = os.environ.get("APP_ID", "17881110")  # 2nd ID
+    APP_HASH = os.environ.get("APP_HASH",
+                              "41d02175c2858cae93b745ffa4aaed24")  # 2nd ID
     ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True)  # Don't Change
     DATABASE_NAME = os.environ.get(
         "DATABASE_NAME", True
@@ -310,11 +326,7 @@ telegraph.create_account(short_name="LOGI-LAB")
 LOGGER.debug("[LOGI-LAB]: TELETHON CLIENT STARTING")
 telethn = TelegramClient(MemorySession(), API_ID, API_HASH)
 
-QUEEN_PTB = (
-    tg.Application.builder()
-    .token(TOKEN)
-    .build()
-)
+QUEEN_PTB = (tg.Application.builder().token(TOKEN).build())
 
 # asyncio.get_event_loop().run_until_complete(LOGI-LAB_PTB.bot.initialize())
 #------------------------------------------------------------------
@@ -327,7 +339,7 @@ pgram = Client(
     bot_token=TOKEN,
     workers=min(32,
                 os.cpu_count() + 4),
-    parse_mode=ParseMode.HTML,            
+    parse_mode=ParseMode.HTML,
     sleep_threshold=60,
     in_memory=True,
 )
@@ -387,8 +399,7 @@ DEV_USERS = list(DEV_USERS)
 WHITELIST_USERS = list(WHITELIST_USERS)
 SUPPORT_USERS = list(SUPPORT_USERS)
 TIGER_USERS = list(TIGER_USERS)
-ELEVATED_USERS_FILE = os.path.join(os.getcwd(),
-                                   "Gbot/elevated_users.json")
+ELEVATED_USERS_FILE = os.path.join(os.getcwd(), "Gbot/elevated_users.json")
 
 # Load at end to ensure all prev variables have been set
 from Gbot.modules.helper_funcs.handlers import CustomCommandHandler

@@ -23,8 +23,7 @@ async def load(update: Update):
     )
 
     try:
-        imported_module = importlib.import_module(
-            f"Gbot.modules.{text}")
+        imported_module = importlib.import_module(f"Gbot.modules.{text}")
     except Exception:
         await load_messasge.edit_text("Does that module even exist?")
         return
@@ -94,8 +93,7 @@ async def unload(update: Update):
     )
 
     try:
-        imported_module = importlib.import_module(
-            f"Gbot.modules.{text}")
+        imported_module = importlib.import_module(f"Gbot.modules.{text}")
     except Exception:
         await unload_messasge.edit_text("Does that module even exist?")
         return

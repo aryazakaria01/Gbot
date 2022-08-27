@@ -35,8 +35,7 @@ class ErrorsDict(dict):
 errors = ErrorsDict()
 
 
-async def error_callback(update: Update,
-                         context: CallbackContext) -> None:
+async def error_callback(update: Update, context: CallbackContext) -> None:
     if not update:
         return
 
@@ -94,6 +93,7 @@ async def error_callback(update: Update,
             [[InlineKeyboardButton("PrivateBin", url=paste_url)]]),
         parse_mode=ParseMode.HTML,
     )
+
 
 """
 async def list_errors(update: Update,

@@ -27,8 +27,7 @@ from Gbot.modules.connection import connected
 
 
 @user_admin
-async def import_data(update: Update,
-                      context: CallbackContext) -> None:
+async def import_data(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     chat = update.effective_chat
     user = update.effective_user
@@ -122,8 +121,7 @@ async def import_data(update: Update,
 
 
 @user_admin
-async def export_data(update: Update,
-                      context: CallbackContext) -> None:
+async def export_data(update: Update, context: CallbackContext) -> None:
     chat_data = context.chat_data
     msg = update.effective_message  # type: Optional[Message]
     user = update.effective_user  # type: Optional[User]

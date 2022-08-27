@@ -46,16 +46,12 @@ from telegram.error import (
     TimedOut,
     Forbidden,
 )
-from telegram.ext import (
-    CallbackContext,
-    CallbackContext,
-    filters,
-    CallbackQueryHandler,
-    MessageHandler
-)
+from telegram.ext import (CallbackContext, CallbackContext, filters,
+                          CallbackQueryHandler, MessageHandler)
 
 from telegram.helpers import escape_markdown
 from pyrogram import idle
+
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -118,29 +114,30 @@ buttons = [
     ],
     [
         InlineKeyboardButton(text="[✨ ʜᴇʟᴘ ✨]", callback_data="help_back"),
-        InlineKeyboardButton(text="[✨ ᴍᴜꜱɪᴄ ✨]",
-                             callback_data="help_back"),
+        InlineKeyboardButton(text="[✨ ᴍᴜꜱɪᴄ ✨]", callback_data="help_back"),
         InlineKeyboardButton(text="[✨ ɪɴʟɪɴᴇ ✨]",
                              switch_inline_query_current_chat=""),
     ],
     [
-        InlineKeyboardButton(text="[✨ ᴍʏ ɢᴏᴅ ✨]", url="https://telegram.dog/ROWDY_OF_PLUS"),
-        InlineKeyboardButton(text="[✨  ꜰᴇᴅ   ✨]",
-                             url="https://telegram.dog/udanpiruppugangsfederal"),
+        InlineKeyboardButton(text="[✨ ᴍʏ ɢᴏᴅ ✨]",
+                             url="https://telegram.dog/ROWDY_OF_PLUS"),
+        InlineKeyboardButton(
+            text="[✨  ꜰᴇᴅ   ✨]",
+            url="https://telegram.dog/udanpiruppugangsfederal"),
         InlineKeyboardButton(text="[✨ ᴊᴏɪɴ ✨]",
-                             url="https://telegram.dog/Team_udanpirappu"),                             
-    ],    
+                             url="https://telegram.dog/Team_udanpirappu"),
+    ],
     [
         InlineKeyboardButton(text="[✨  ꜱᴜᴘᴘᴏʀᴛ ᴜꜱ  ✨]",
                              url=f"https://telegram.dog/{SUPPORT_CHAT}"),
-        InlineKeyboardButton(text="[✨  ᴜᴘᴅᴀᴛᴇ ɪɴ  ✨]",
-                             url="https://telegram.dog/udanpiruppugangsfederal")
+        InlineKeyboardButton(
+            text="[✨  ᴜᴘᴅᴀᴛᴇ ɪɴ  ✨]",
+            url="https://telegram.dog/udanpiruppugangsfederal")
     ],
     [
-        InlineKeyboardButton(
-            text="[✨  ƬЄ𝗔Μ ƲƉ𝗔ИƤƖЯ𝗔ƤƤƲ  ✨]",
-            url=f"https://telegram.dog/Team_udanpirappu")
-    ],    
+        InlineKeyboardButton(text="[✨  ƬЄ𝗔Μ ƲƉ𝗔ИƤƖЯ𝗔ƤƤƲ  ✨]",
+                             url=f"https://telegram.dog/Team_udanpirappu")
+    ],
 ]
 
 HELP_STRINGS = """
@@ -168,8 +165,7 @@ USER_SETTINGS = {}
 GDPR = []
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module(
-        f"Gbot.modules.{module_name}")
+    imported_module = importlib.import_module(f"Gbot.modules.{module_name}")
 
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
@@ -210,10 +206,7 @@ for module_name in ALL_MODULES:
 
 
 # do not async
-async def send_help(context: CallbackContext,
-                    chat_id,
-                    text,
-                    keyboard=None):
+async def send_help(context: CallbackContext, chat_id, text, keyboard=None):
     if not keyboard:
         keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
     await context.bot.send_message(
@@ -223,7 +216,6 @@ async def send_help(context: CallbackContext,
         disable_web_page_preview=True,
         reply_markup=keyboard,
     )
-
 
 
 async def test(update: Update):
@@ -283,10 +275,12 @@ async def start(update: Update, context: CallbackContext):
             f"ɪ'ᴍ ᴀᴡᴀᴋᴇ ᴀʟʀᴇᴀᴅʏ ☺ !\n<b>ʜᴀᴠᴇɴ'ᴛ ꜱʟᴇᴘᴛ ꜱɪɴᴄᴇ🤩:</b> <code>{uptime}</code>",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup([[
-        InlineKeyboardButton(text="[✨  ꜱᴜᴘᴘᴏʀᴛ ᴜꜱ  ✨]",
-                             url=f"https://telegram.dog/{SUPPORT_CHAT}"),
-        InlineKeyboardButton(text="[✨  ᴜᴘᴅᴀᴛᴇ ɪɴ  ✨]",
-                             url="https://telegram.dog/udanpiruppugangsfederal")
+                InlineKeyboardButton(
+                    text="[✨  ꜱᴜᴘᴘᴏʀᴛ ᴜꜱ  ✨]",
+                    url=f"https://telegram.dog/{SUPPORT_CHAT}"),
+                InlineKeyboardButton(
+                    text="[✨  ᴜᴘᴅᴀᴛᴇ ɪɴ  ✨]",
+                    url="https://telegram.dog/udanpiruppugangsfederal")
             ]]),
         )
 
@@ -335,9 +329,7 @@ async def error_callback(_, context: CallbackContext):
         # handle all other telegram related errors
 
 
-
-async def help_button(update: Update,
-                      context: CallbackContext) -> None:
+async def help_button(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
     mod_match = re.match(r"help_module\((.+?)\)", query.data)
     prev_match = re.match(r"help_prev\((.+?)\)", query.data)
@@ -356,9 +348,10 @@ async def help_button(update: Update,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup([[
                     InlineKeyboardButton(text="[✨ ʙᴀᴄᴋ  ✨]",
-                                             callback_data="help_back"),
-                    InlineKeyboardButton(text="[✨  ꜱᴜᴘᴘᴏʀᴛ ᴜꜱ  ✨]",
-                             url=f"https://telegram.dog/{SUPPORT_CHAT}"),
+                                         callback_data="help_back"),
+                    InlineKeyboardButton(
+                        text="[✨  ꜱᴜᴘᴘᴏʀᴛ ᴜꜱ  ✨]",
+                        url=f"https://telegram.dog/{SUPPORT_CHAT}"),
                 ]]),
             )
 
@@ -393,7 +386,6 @@ async def help_button(update: Update,
         # await query.message.delete()
 
 
-
 async def cutiepii_callback_data(update: Update,
                                  context: CallbackContext) -> None:
     query = update.callback_query
@@ -420,7 +412,6 @@ async def cutiepii_callback_data(update: Update,
             timeout=60,
             disable_web_page_preview=False,
         )
-
 
 
 async def get_help(update: Update, context: CallbackContext) -> None:
@@ -502,8 +493,7 @@ async def send_settings(context: CallbackContext,
         )
 
 
-async def settings_button(update: Update,
-                          context: CallbackContext) -> None:
+async def settings_button(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
     user = update.effective_user
     bot = context.bot
@@ -580,8 +570,7 @@ async def settings_button(update: Update,
                              str(query.data))
 
 
-async def get_settings(update: Update,
-                       context: CallbackContext) -> None:
+async def get_settings(update: Update, context: CallbackContext) -> None:
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
     msg = update.effective_message  # type: Optional[Message]
@@ -636,10 +625,12 @@ async def donate(update: Update, context: CallbackContext) -> None:
                 text=
                 "ɪ'ᴍ ꜰʀᴇᴇ ꜰᴏʀ ᴇᴠᴇʀʏᴏɴᴇ❤️\nᴊᴜꜱᴛ ᴅᴏɴᴀᴛᴇ ʙʏ ꜱᴜʙꜱ ᴄʜᴀɴɴᴇʟ, ᴅᴏɴ'ᴛ ꜰᴏʀɢᴇᴛ ᴛᴏ ᴊᴏɪɴ ᴛʜᴇ ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ.",
                 reply_markup=InlineKeyboardMarkup([[
-        InlineKeyboardButton(text="[✨  ꜱᴜᴘᴘᴏʀᴛ ᴜꜱ  ✨]",
-                             url=f"https://telegram.dog/{SUPPORT_CHAT}"),
-        InlineKeyboardButton(text="[✨  ᴜᴘᴅᴀᴛᴇ ɪɴ  ✨]",
-                             url="https://telegram.dog/udanpiruppugangsfederal")
+                    InlineKeyboardButton(
+                        text="[✨  ꜱᴜᴘᴘᴏʀᴛ ᴜꜱ  ✨]",
+                        url=f"https://telegram.dog/{SUPPORT_CHAT}"),
+                    InlineKeyboardButton(
+                        text="[✨  ᴜᴘᴅᴀᴛᴇ ɪɴ  ✨]",
+                        url="https://telegram.dog/udanpiruppugangsfederal")
                 ]]),
             )
         except Forbidden:
@@ -668,27 +659,38 @@ async def migrate_chats(update: Update):
 def main():
     QUEEN_PTB.add_error_handler(error_callback)
     QUEEN_PTB.add_handler(DisableAbleCommandHandler("test", test, block=False))
-    QUEEN_PTB.add_handler(DisableAbleCommandHandler("start", start, block=False))
+    QUEEN_PTB.add_handler(
+        DisableAbleCommandHandler("start", start, block=False))
 
-    QUEEN_PTB.add_handler(DisableAbleCommandHandler("help", get_help, block=False))
-    QUEEN_PTB.add_handler(CallbackQueryHandler(help_button, pattern=r"help_.*", block=False))
+    QUEEN_PTB.add_handler(
+        DisableAbleCommandHandler("help", get_help, block=False))
+    QUEEN_PTB.add_handler(
+        CallbackQueryHandler(help_button, pattern=r"help_.*", block=False))
 
-    QUEEN_PTB.add_handler(DisableAbleCommandHandler("settings", get_settings, block=False))
-    QUEEN_PTB.add_handler(CallbackQueryHandler(settings_button, pattern=r"stngs_", block=False))
+    QUEEN_PTB.add_handler(
+        DisableAbleCommandHandler("settings", get_settings, block=False))
+    QUEEN_PTB.add_handler(
+        CallbackQueryHandler(settings_button, pattern=r"stngs_", block=False))
 
-    QUEEN_PTB.add_handler(CallbackQueryHandler(cutiepii_callback_data, pattern=r"cutiepii_", block=False))
+    QUEEN_PTB.add_handler(
+        CallbackQueryHandler(cutiepii_callback_data,
+                             pattern=r"cutiepii_",
+                             block=False))
     QUEEN_PTB.add_handler(DisableAbleCommandHandler("donate", donate))
-    QUEEN_PTB.add_handler(MessageHandler(filters.StatusUpdate.MIGRATE, migrate_chats, block=False))
+    QUEEN_PTB.add_handler(
+        MessageHandler(filters.StatusUpdate.MIGRATE,
+                       migrate_chats,
+                       block=False))
 
     if WEBHOOK:
         LOGGER.info("Using webhooks.")
         QUEEN_PTB.run_webhook(listen="127.0.0.1", port=PORT, url_path=TOKEN)
 
     else:
-        QUEEN_PTB.run_polling(allowed_updates=Update.ALL_TYPES, stop_signals=None)
+        QUEEN_PTB.run_polling(allowed_updates=Update.ALL_TYPES,
+                              stop_signals=None)
         LOGGER.info(
-            "Qᴜᴇᴇɴ ʙᴏᴛ started, ᴜꜱɪɴɢ ʟᴏɴɢ ᴘᴏʟʟɪɴɢ. | ʙᴏᴛ: [@ROWDY_OF_PLUS]"
-        )
+            "Qᴜᴇᴇɴ ʙᴏᴛ started, ᴜꜱɪɴɢ ʟᴏɴɢ ᴘᴏʟʟɪɴɢ. | ʙᴏᴛ: [@ROWDY_OF_PLUS]")
 
 
 """

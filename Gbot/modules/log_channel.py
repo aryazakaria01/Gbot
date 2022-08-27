@@ -100,8 +100,7 @@ if is_module_loaded(FILENAME):
                 )
 
     @u_admin
-    async def logging(update: Update,
-                      context: CallbackContext) -> None:
+    async def logging(update: Update, context: CallbackContext) -> None:
         bot = context.bot
         message = update.effective_message
         chat = update.effective_chat
@@ -119,8 +118,7 @@ if is_module_loaded(FILENAME):
                 "No log channel has been set for this group!")
 
     @user_admin(AdminPerms.CAN_CHANGE_INFO)
-    async def setlog(update: Update,
-                     context: CallbackContext) -> None:
+    async def setlog(update: Update, context: CallbackContext) -> None:
         bot = context.bot
         message = update.effective_message
         chat = update.effective_chat
@@ -160,8 +158,7 @@ if is_module_loaded(FILENAME):
                                      " - forward the /setlog to the group\n")
 
     @user_admin(AdminPerms.CAN_CHANGE_INFO)
-    async def unsetlog(update: Update,
-                       context: CallbackContext) -> None:
+    async def unsetlog(update: Update, context: CallbackContext) -> None:
         bot = context.bot
         message = update.effective_message
         chat = update.effective_chat
@@ -276,4 +273,7 @@ async def log_setting_callback(update: Update,
     QUEEN_PTB.add_handler(CallbackQueryHandler(unbanb_btn, pattern=r"unbanb_"))
     QUEEN_PTB.add_handler(CommandHandler("unsetlog", unsetlog, block=False))
     QUEEN_PTB.add_handler(CommandHandler("logsettings", unsetlog, block=False))
-    QUEEN_PTB.add_handler(CallbackQueryHandler(log_setting_callback, pattern=r"log_tog_.*", block=False))
+    QUEEN_PTB.add_handler(
+        CallbackQueryHandler(log_setting_callback,
+                             pattern=r"log_tog_.*",
+                             block=False))

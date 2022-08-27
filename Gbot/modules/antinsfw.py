@@ -131,8 +131,7 @@ async def nsfw_scan_command(_, message):
 
 
 @pgram.on_message(
-    filters.command(["antinsfw", "antinsfw@Gbot"]) & ~filters.private
-)
+    filters.command(["antinsfw", "antinsfw@Gbot"]) & ~filters.private)
 @adminsOnly("can_change_info")
 async def nsfw_enable_disable(_, message):
     if len(message.command) != 2:

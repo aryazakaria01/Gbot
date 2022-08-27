@@ -192,10 +192,9 @@ async def markdown_help_sender(update: Update):
         ],
     ])
     if update.callback_query:
-        await update.effective_message.edit_text(
-            FORMATTING_HELP,
-            parse_mode=ParseMode.MARKDOWN,
-            reply_markup=markup)
+        await update.effective_message.edit_text(FORMATTING_HELP,
+                                                 parse_mode=ParseMode.MARKDOWN,
+                                                 reply_markup=markup)
     else:
         await update.effective_message.reply_text(
             FORMATTING_HELP,
@@ -203,8 +202,7 @@ async def markdown_help_sender(update: Update):
             reply_markup=markup)
 
 
-async def markdown_help(update: Update,
-                        context: CallbackContext) -> None:
+async def markdown_help(update: Update, context: CallbackContext) -> None:
     if update.effective_chat.type != "private":
         await update.effective_message.reply_text(
             "Contact me in pm",
@@ -221,8 +219,7 @@ async def markdown_help(update: Update,
     markdown_help_sender(update)
 
 
-async def mkdown_btn(update: Update,
-                     context: CallbackContext) -> None:
+async def mkdown_btn(update: Update, context: CallbackContext) -> None:
     bot = context.bot
     query = update.callback_query
     match = query.data.split("_")[1]
@@ -327,8 +324,7 @@ async def rmemes(update: Update, context: CallbackContext) -> None:
         return await msg.reply_text(f"Error! {excp.message}")
 
 
-async def markdown_help(update: Update,
-                        context: CallbackContext) -> None:
+async def markdown_help(update: Update, context: CallbackContext) -> None:
     if update.effective_chat.type != "private":
         await update.effective_message.reply_text(
             "Contact me in pm",
@@ -566,10 +562,8 @@ QUEEN_PTB.add_handler(
                    src,
                    filters=PTB_Queen_Filters.ChatType.PRIVATE,
                    block=False))
-QUEEN_PTB.add_handler(
-    DisableAbleCommandHandler("rmeme", rmemes, block=False))
-QUEEN_PTB.add_handler(
-    DisableAbleCommandHandler("status", status, block=False))
+QUEEN_PTB.add_handler(DisableAbleCommandHandler("rmeme", rmemes, block=False))
+QUEEN_PTB.add_handler(DisableAbleCommandHandler("status", status, block=False))
 QUEEN_PTB.add_handler(DisableAbleCommandHandler("imdb", imdb, block=False))
 
 __mod_name__ = "[✨ ᴇxᴛʀᴀꜱ ✨]"
