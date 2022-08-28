@@ -162,11 +162,11 @@ if ENV:
         "mongodb+srv://logesh:logesh@cluster0.z75dh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
     )  # MongoDB URL (From:- https://www.mongodb.com/)
     REDIS_URL = os.environ.get(
-        "REDIS_URL"
+        "REDIS_URL" , "redis://default:pCLdkE3UCYVQa7DAXhb2jK9mi6ahyR0r@redis-19911.c301.ap-south-1-1.ec2.cloud.redislabs.com:19911:8080/"
     )  # REDIS URL (Take it from redislabs.com and the format should be redis://username:password@publicendpoint:port/)
     SUPPORT_CHAT = os.environ.get(
         "SUPPORT_CHAT", "https://t.me/gangs_for_udanpirappu"
-    )  # Support Chat Group Link (Use @Black_Knights_Union_Support || Dont Use https://telegram.dog/Black_Knights_Union_Support)
+    )  # Support Chat Group Link 
     STRING_SESSION = os.environ.get(
         "STRING_SESSION",
         "1BJWap1wBu4PHJtLqjwzJwKiORgDiDQ378EL06z4TtLyWuGGpvrMthkhxoZpNsJs9B1WWh5BHb3pXMtcgi3ScUfaoOCZyKP_b6ujuqYrC-lMNCNxVAnE1n0vk-aNgVm2LTnKExjLRj3F_VGaDB1gTvfsVxszOnMLKpA2mxpU62T2w-e_SExbOsSflydoKZET_IZ7Rlx-Gy5v13WTbHVH7HevZ06TrChFpfCrJSwfLgGKHcZsxgRCI7IyiokV53gbJ5g7Sd1s47EzEK3YKOeCS3jppNCCRNCB3ua8ncIS2XaABJAVkiJ4MwCMkupuyNCgMA38l-X0SNJu4aLqpwHl6ovaQ-Za0KmE="
