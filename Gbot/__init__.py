@@ -162,7 +162,7 @@ if ENV:
         "mongodb+srv://logesh:logesh@cluster0.z75dh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
     )  # MongoDB URL (From:- https://www.mongodb.com/)
     REDIS_URL = os.environ.get(
-        "REDIS_URL" , "redis://default:pCLdkE3UCYVQa7DAXhb2jK9mi6ahyR0r@redis-19911.c301.ap-south-1-1.ec2.cloud.redislabs.com:19911:8080/"
+        "REDIS_URL" , "redis://default:pCLdkE3UCYVQa7DAXhb2jK9mi6ahyR0r@redis-19911.c301.ap-south-1-1.ec2.cloud.redislabs.com:19911/"
     )  # REDIS URL (Take it from redislabs.com and the format should be redis://username:password@publicendpoint:port/)
     SUPPORT_CHAT = os.environ.get(
         "SUPPORT_CHAT", "https://t.me/gangs_for_udanpirappu"
