@@ -81,7 +81,7 @@ async def connection_chat(update: Update,
         chat_name = update.effective_message.chat.title
 
     if conn:
-        message = "You are currently connected to {}.\n".format(chat_name)
+        message = f"You are currently connected to {chat_name}.\n"
     else:
         message = "You are currently not connected in any group.\n"
     send_message(update.effective_message, message, parse_mode="markdown")
@@ -127,10 +127,10 @@ async def connect_chat(
                     chat_name = conn_chat.title
                     send_message(
                         update.effective_message,
-                        "Successfully connected to *{}*. \nUse /helpconnect to check available commands."
-                        .format(chat_name),
+                        f"Successfully connected to *{chat_name}*. \nUse /helpconnect to check available commands.",
                         parse_mode=ParseMode.MARKDOWN,
                     )
+
                     sql.add_history_conn(user.id, str(conn_chat.id), chat_name)
                 else:
                     send_message(update.effective_message,
@@ -170,9 +170,8 @@ async def connect_chat(
                 buttons = [buttons]
                 for x in sorted(gethistory.keys(), reverse=True):
                     htime = time.strftime("%d/%m/%Y", time.localtime(x))
-                    text += "╞═「 *{}* 」\n│   `{}`\n│   `{}`\n".format(
-                        gethistory[x]["chat_name"], gethistory[x]["chat_id"],
-                        htime)
+                    text += f'╞═「 *{gethistory[x]["chat_name"]}* 」\n│   `{gethistory[x]["chat_id"]}`\n│   `{htime}`\n'
+
                     text += "│\n"
                     buttons.append([
                         InlineKeyboardButton(
@@ -218,10 +217,10 @@ async def connect_chat(
                     sql.add_history_conn(user.id, str(conn_chat.id), chat_name)
                     await context.bot.send_message(
                         update.effective_message.from_user.id,
-                        "You are connected to *{}*. \nUse `/helpconnect` to check available commands."
-                        .format(chat_name),
+                        f"You are connected to *{chat_name}*. \nUse `/helpconnect` to check available commands.",
                         parse_mode="markdown",
                     )
+
                 except (BadRequest, Forbidden):
                     pass
             else:
@@ -335,10 +334,10 @@ async def connect_button(update: Update,
                     context.bot, update, chat, user.id, need_admin=False))
                 chat_name = conn_chat.title
                 await query.message.edit_text(
-                    "Successfully connected to *{}*. \nUse `/helpconnect` to check available commands."
-                    .format(chat_name),
+                    f"Successfully connected to *{chat_name}*. \nUse `/helpconnect` to check available commands.",
                     parse_mode=ParseMode.MARKDOWN,
                 )
+
                 sql.add_history_conn(user.id, str(conn_chat.id), chat_name)
             else:
                 await query.message.edit_text("Connection failed!")

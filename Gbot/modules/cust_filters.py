@@ -255,12 +255,8 @@ async def stop_filter(update, context) -> str:
                 f"Okay, I'll stop replying to that filter in *{chat_name}*.",
                 parse_mode=ParseMode.MARKDOWN,
             )
-            logmsg = (
-                f"<b>{escape(chat.title or chat.id)}:</b>\n"
-                f"#STOPFILTER\n"
-                f"<b>Admin:</b> {mention_html(user.id, escape(user.first_name))}\n"
-                f"<b>Filter:</b> {keyword}")
-            return logmsg
+            return f"<b>{escape(chat.title or chat.id)}:</b>\n#STOPFILTER\n<b>Admin:</b> {mention_html(user.id, escape(user.first_name))}\n<b>Filter:</b> {keyword}"
+
 
     send_message(
         update.effective_message,

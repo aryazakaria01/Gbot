@@ -33,13 +33,13 @@ def _onUnMuteRequest(client, cb):
     except:
         return
     if chat_db := sql.fs_settings(chat_id):
-        channel = "gangs_for_udanpirappu"
         try:
             chat_member = client.get_chat_member(chat_id, user_id)
         except:
             return
         if chat_member.restricted_by:
             if chat_member.restricted_by.id == BOT_ID:
+                channel = "gangs_for_udanpirappu"
                 try:
                     client.get_chat_member(channel, user_id)
                     client.unban_chat_member(chat_id, user_id)

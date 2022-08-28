@@ -21,9 +21,7 @@ def check_user_id(user_id: int, context: CallbackContext) -> Optional[str]:
     if not user_id:
         return "Nice try... Nope! Provide me an valid User ID."
 
-    if user_id == bot.id:
-        return "This does not work that way."
-    return None
+    return "This does not work that way." if user_id == bot.id else None
 
 
 @dev_plus

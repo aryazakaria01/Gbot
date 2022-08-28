@@ -54,13 +54,7 @@ async def approve(update: Update, context: CallbackContext) -> None:
         f"will now be ignored by automated admin actions like locks, blocklists, and antiflood.",
         parse_mode=ParseMode.MARKDOWN,
     )
-    log_message = (
-        f"<b>{html.escape(chat.title)}:</b>\n"
-        f"#APPROVED\n"
-        f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
-        f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}")
-
-    return log_message
+    return f"<b>{html.escape(chat.title)}:</b>\n#APPROVED\n<b>Admin:</b> {mention_html(user.id, user.first_name)}\n<b>User:</b> {mention_html(member.user.id, member.user.first_name)}"
 
 
 @loggable
@@ -92,13 +86,7 @@ async def disapprove(update: Update, context: CallbackContext) -> None:
     sql.disapprove(message.chat_id, user_id)
     await message.reply_text(
         f"{member.user['first_name']} is no longer approved in {chat_title}.")
-    log_message = (
-        f"<b>{html.escape(chat.title)}:</b>\n"
-        f"#UNAPPROVED\n"
-        f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
-        f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}")
-
-    return log_message
+    return f"<b>{html.escape(chat.title)}:</b>\n#UNAPPROVED\n<b>Admin:</b> {mention_html(user.id, user.first_name)}\n<b>User:</b> {mention_html(member.user.id, member.user.first_name)}"
 
 
 @user_admin
