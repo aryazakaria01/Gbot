@@ -47,10 +47,10 @@ logging.getLogger("pyrogram").setLevel(logging.INFO)
 
 LOGGER = logging.getLogger(__name__)
 
-# if version < 3.6, stop bot.
+# if version < 3.8, stop bot.
 if sys.version_info[0] < 3 or sys.version_info[1] < 8:
     LOGGER.error(
-        "You MUST have a python version of at least 3.6! Multiple features depend on this. Bot quitting.",
+        "You MUST have a python version of at least 3.8! Multiple features depend on this. Bot quitting.",
     )
     sys.exit(1)
 
@@ -127,10 +127,7 @@ if ENV:
     API_HASH = os.environ.get(
         "API_HASH", "41d02175c2858cae93b745ffa4aaed24"
     )  # Bot Owner's API_HASH (From:- https://my.telegram.org/auth)
-    DATABASE_URL = os.environ.get(
-        "DATABASE_URL",
-        "postgres://hcjfbzij:Rt4bGc1EuLvdpuoXe9jlW2mfq1iJXfY_@lallah.db.elephantsql.com/hcjfbzij"
-    )  # Any SQL Database Link (RECOMMENDED:- PostgreSQL & https://www.elephantsql.com)
+    DATABASE_URL = os.environ.get("DATABASE_URL").replace("postgres://", "postgresql://")  # Any SQL Database Link (RECOMMENDED:- PostgreSQL & https://www.elephantsql.com)
     DONATION_LINK = os.environ.get(
         "DONATION_LINK", "https://t.me/ROWDY_OF_PLUS")  # Donation Link (ANY)
     LOAD = os.environ.get("LOAD", "").split()  # Don't Change
