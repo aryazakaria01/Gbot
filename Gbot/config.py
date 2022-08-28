@@ -80,7 +80,7 @@ class Config(object):
     TIME_API_KEY = ""
     WALL_API = ""
     MONGO_DB_URL = ""
-    REDIS_URL = ""
+    REDIS_URL = "redis://default:pCLdkE3UCYVQa7DAXhb2jK9mi6ahyR0r@redis-19911.c301.ap-south-1-1.ec2.cloud.redislabs.com:19911:8080/"
     SUPPORT_CHAT = ""
     REM_BG_API_KEY = ""
     OPENWEATHERMAP_ID = ""
