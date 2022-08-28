@@ -110,35 +110,46 @@ buttons = [
     [
         InlineKeyboardButton(
             text="[✨ ᴀᴅᴅ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ✨]",
-            url=f"https://telegram.dog/udanpirappumusic_bot?startgroup=true")
+            url="https://telegram.dog/udanpirappumusic_bot?startgroup=true",
+        )
     ],
     [
         InlineKeyboardButton(text="[✨ ʜᴇʟᴘ ✨]", callback_data="help_back"),
         InlineKeyboardButton(text="[✨ ᴍᴜꜱɪᴄ ✨]", callback_data="help_back"),
-        InlineKeyboardButton(text="[✨ ɪɴʟɪɴᴇ ✨]",
-                             switch_inline_query_current_chat=""),
+        InlineKeyboardButton(
+            text="[✨ ɪɴʟɪɴᴇ ✨]", switch_inline_query_current_chat=""
+        ),
     ],
     [
-        InlineKeyboardButton(text="[✨ ᴍʏ ɢᴏᴅ ✨]",
-                             url="https://telegram.dog/ROWDY_OF_PLUS"),
+        InlineKeyboardButton(
+            text="[✨ ᴍʏ ɢᴏᴅ ✨]", url="https://telegram.dog/ROWDY_OF_PLUS"
+        ),
         InlineKeyboardButton(
             text="[✨  ꜰᴇᴅ   ✨]",
-            url="https://telegram.dog/udanpiruppugangsfederal"),
-        InlineKeyboardButton(text="[✨ ᴊᴏɪɴ ✨]",
-                             url="https://telegram.dog/Team_udanpirappu"),
+            url="https://telegram.dog/udanpiruppugangsfederal",
+        ),
+        InlineKeyboardButton(
+            text="[✨ ᴊᴏɪɴ ✨]", url="https://telegram.dog/Team_udanpirappu"
+        ),
     ],
     [
-        InlineKeyboardButton(text="[✨  ꜱᴜᴘᴘᴏʀᴛ ᴜꜱ  ✨]",
-                             url=f"https://telegram.dog/{SUPPORT_CHAT}"),
+        InlineKeyboardButton(
+            text="[✨  ꜱᴜᴘᴘᴏʀᴛ ᴜꜱ  ✨]",
+            url=f"https://telegram.dog/{SUPPORT_CHAT}",
+        ),
         InlineKeyboardButton(
             text="[✨  ᴜᴘᴅᴀᴛᴇ ɪɴ  ✨]",
-            url="https://telegram.dog/udanpiruppugangsfederal")
+            url="https://telegram.dog/udanpiruppugangsfederal",
+        ),
     ],
     [
-        InlineKeyboardButton(text="[✨  ƬЄ𝗔Μ ƲƉ𝗔ИƤƖЯ𝗔ƤƤƲ  ✨]",
-                             url=f"https://telegram.dog/Team_udanpirappu")
+        InlineKeyboardButton(
+            text="[✨  ƬЄ𝗔Μ ƲƉ𝗔ИƤƖЯ𝗔ƤƤƲ  ✨]",
+            url="https://telegram.dog/Team_udanpirappu",
+        )
     ],
 ]
+
 
 HELP_STRINGS = """
 *ɪ ʜᴀᴠᴇ ᴍᴏʀᴇ ᴍᴏᴅᴜʟᴇꜱ ꜰᴏʀ ʏᴏᴜʀ ᴜꜱᴇ ʏᴏᴜ ᴄᴀɴ ᴀᴄᴄᴇꜱꜱ ᴡɪᴛʜ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ*: \n
@@ -506,9 +517,12 @@ async def settings_button(update: Update, context: CallbackContext) -> None:
             chat_id = mod_match[1]
             module = mod_match[2]
             chat = await bot.get_chat(chat_id)
-            text = "*{}* ʜᴀꜱ ᴛʜᴇ ꜰᴏʟʟᴏᴡɪɴɢ ꜱᴇᴛᴛɪɴɢꜱ ꜰᴏʀ ᴛʜᴇ *{}* module:\n\n".format(
-                escape_markdown(chat.title), CHAT_SETTINGS[module].__mod_name__
-            ) + CHAT_SETTINGS[module].__chat_settings__(chat_id, user.id)
+            text = f"*{escape_markdown(chat.title)}* ʜᴀꜱ ᴛʜᴇ ꜰᴏʟʟᴏᴡɪɴɢ ꜱᴇᴛᴛɪɴɢꜱ ꜰᴏʀ ᴛʜᴇ *{CHAT_SETTINGS[module].__mod_name__}* module:\n\n" + CHAT_SETTINGS[
+                module
+            ].__chat_settings__(
+                chat_id, user.id
+            )
+
             try:
                 keyboard = CHAT_SETTINGS[module].__chat_settings_buttons__(
                     chat_id, user.id)

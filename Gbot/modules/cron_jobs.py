@@ -71,7 +71,7 @@ async def backup_db(_: CallbackContext):
     LOGGER.info("zip done")
     sleep(1)
     with open(f'backups/{datenow}.zip', 'rb') as bkp:
-        nm = f"{bot.username} backup \n" + datenow
+        nm = f"{bot.username} backup \n{datenow}"
         await bot.send_document(OWNER_ID, document=bkp, caption=nm, timeout=20)
     LOGGER.info("removing zipped files")
     shutil.rmtree(f"backups/{datenow}")

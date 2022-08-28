@@ -256,7 +256,7 @@ async def blacklist_mode(update: Update,
                 )
                 send_message(msg, teks, parse_mode=ParseMode.MARKDOWN)
                 return ""
-            settypeblacklist = "temporarily ban for {}".format(args[1])
+            settypeblacklist = f"temporarily ban for {args[1]}"
             sql.set_blacklist_strength(chat_id, 6, str(args[1]))
         elif args[0].lower() == "tmute":
             if len(args) == 1:
@@ -275,7 +275,7 @@ async def blacklist_mode(update: Update,
                 )
                 send_message(msg, teks, parse_mode=ParseMode.MARKDOWN)
                 return ""
-            settypeblacklist = "temporarily mute for {}".format(args[1])
+            settypeblacklist = f"temporarily mute for {args[1]}"
             sql.set_blacklist_strength(chat_id, 7, str(args[1]))
         else:
             send_message(
@@ -284,18 +284,12 @@ async def blacklist_mode(update: Update,
             )
             return ""
         if conn:
-            text = "Changed blacklist mode: `{}` in *{}*!".format(
-                settypeblacklist, chat_name)
+            text = f"Changed blacklist mode: `{settypeblacklist}` in *{chat_name}*!"
         else:
-            text = "Changed blacklist mode: `{}`!".format(settypeblacklist)
+            text = f"Changed blacklist mode: `{settypeblacklist}`!"
         send_message(msg, text, parse_mode=ParseMode.MARKDOWN)
-        return ("<b>{}:</b>\n"
-                "<b>Admin:</b> {}\n"
-                "Changed the blacklist mode. will {}.".format(
-                    html.escape(chat.title),
-                    mention_html(user.id, html.escape(user.first_name)),
-                    settypeblacklist,
-                ))
+        return f"<b>{html.escape(chat.title)}:</b>\n<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\nChanged the blacklist mode. will {settypeblacklist}."
+
     getmode, getvalue = sql.get_blacklist_setting(chat.id)
     if getmode == 0:
         settypeblacklist = "do nothing"
@@ -310,14 +304,13 @@ async def blacklist_mode(update: Update,
     elif getmode == 5:
         settypeblacklist = "ban"
     elif getmode == 6:
-        settypeblacklist = "temporarily ban for {}".format(getvalue)
+        settypeblacklist = f"temporarily ban for {getvalue}"
     elif getmode == 7:
-        settypeblacklist = "temporarily mute for {}".format(getvalue)
+        settypeblacklist = f"temporarily mute for {getvalue}"
     if conn:
-        text = "Current blacklistmode: *{}* in *{}*.".format(
-            settypeblacklist, chat_name)
+        text = f"Current blacklistmode: *{settypeblacklist}* in *{chat_name}*."
     else:
-        text = "Current blacklistmode: *{}*.".format(settypeblacklist)
+        text = f"Current blacklistmode: *{settypeblacklist}*."
     send_message(msg, text, parse_mode=ParseMode.MARKDOWN)
     return ""
 

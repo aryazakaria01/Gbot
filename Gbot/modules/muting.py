@@ -230,11 +230,10 @@ async def unmute(update: Update, context: CallbackContext) -> str:
         with contextlib.suppress(BadRequest):
             await bot.restrict_chat_member(chat.id, (user_id),
                                            chat_permissions)
-        unmutemsg = "{} was unmuted by {} in <b>{}</b>".format(
-            mention_html(member.user.id, member.user.first_name),
-            user.first_name, message.chat.title)
+        unmutemsg = f"{mention_html(member.user.id, member.user.first_name)} was unmuted by {user.first_name} in <b>{message.chat.title}</b>"
+
         if reason:
-            unmutemsg += "\n<b>Reason</b>: <code>{}</code>".format(reason)
+            unmutemsg += f"\n<b>Reason</b>: <code>{reason}</code>"
         await bot.sendMessage(
             chat.id,
             unmutemsg,

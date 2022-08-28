@@ -49,13 +49,7 @@ async def mod(update: Update, context: CallbackContext) -> None:
         f"[{member.user['first_name']}](tg://user?id={member.user['id']}) has been moderator in {chat_title}",
         parse_mode=ParseMode.MARKDOWN,
     )
-    log_message = (
-        f"<b>{html.escape(chat.title)}:</b>\n"
-        f"#MODERATOR\n"
-        f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
-        f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}")
-
-    return log_message
+    return f"<b>{html.escape(chat.title)}:</b>\n#MODERATOR\n<b>Admin:</b> {mention_html(user.id, user.first_name)}\n<b>User:</b> {mention_html(member.user.id, member.user.first_name)}"
 
 
 @loggable
@@ -86,13 +80,7 @@ async def dismod(update: Update, context: CallbackContext) -> None:
     sql.dismod(message.chat_id, user_id)
     await message.reply_text(
         f"{member.user['first_name']} is no longer moderator in {chat_title}.")
-    log_message = (
-        f"<b>{html.escape(chat.title)}:</b>\n"
-        f"#UNMODERTOR\n"
-        f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
-        f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}")
-
-    return log_message
+    return f"<b>{html.escape(chat.title)}:</b>\n#UNMODERTOR\n<b>Admin:</b> {mention_html(user.id, user.first_name)}\n<b>User:</b> {mention_html(member.user.id, member.user.first_name)}"
 
 
 @user_admin

@@ -41,8 +41,10 @@ async def phone(event):
     information = event.pattern_match.group(1)
     number = information
     key = "fe65b94e78fc2e3234c1c6ed1b771abd"
-    api = ("http://apilayer.net/api/validate?access_key=" + key + "&number=" +
-           number + "&country_code=&format=1")
+    api = (
+        f"http://apilayer.net/api/validate?access_key={key}&number=" + number
+    ) + "&country_code=&format=1"
+
     output = requests.get(api)
     content = output.text
     obj = json.loads(content)

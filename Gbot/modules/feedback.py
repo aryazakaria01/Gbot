@@ -18,7 +18,7 @@ async def feedback(e):
     quew = e.pattern_match.group(1)
     user_id = e.sender.id
     user_name = e.sender.first_name
-    mention = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
+    mention = f"[{user_name}](tg://user?id={str(user_id)})"
     HOTTIE = (
         "https://telegra.ph/file/5a03a79acba8d3c407056.jpg",
         "https://telegra.ph//file/15ab1c01c8ed09a7ffc95.jpg",
@@ -36,7 +36,6 @@ async def feedback(e):
         Button.url("Go To Support Group", f"https://t.me/{SUPPORT_CHAT}")
     ]]
     TEXT = "Thanks For Your Feedback, I Hope You Happy With Our Service"
-    GIVE = "Give Some Text For Feedback ✨"
     logger_text = f"""
 **New Feedback**
 **From User:** {mention}
@@ -55,6 +54,7 @@ async def feedback(e):
         return
 
     if e.sender_id != OWNER_ID and not quew:
+        GIVE = "Give Some Text For Feedback ✨"
         await e.reply(
             GIVE,
             parse_mode=ParseMode.MARKDOWN,

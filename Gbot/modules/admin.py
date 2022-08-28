@@ -157,15 +157,15 @@ async def set_sticker(update: Update,
         stk_set = msg.reply_to_message.sticker.set_name
         await bot.set_chat_sticker_set(chat.id, stk_set)
         await msg.reply_text(
-            f"<b>{user.first_name}</b> changed the group stickers set."
-            if not msg.sender_chat else "Group stickers set has been changed.",
-            parse_mode=ParseMode.HTML)
+            "Group stickers set has been changed."
+            if msg.sender_chat
+            else f"<b>{user.first_name}</b> changed the group stickers set.",
+            parse_mode=ParseMode.HTML,
+        )
 
-        log_message = (
-            f"<b>{html.escape(chat.title)}:</b>\n"
-            f"#ADMIN\nChat sticker set changed\n"
-            f"<b>Admin:</b> {mention_html(user.id, user.first_name)}")
-        return log_message
+
+        return f"<b>{html.escape(chat.title)}:</b>\n#ADMIN\nChat sticker set changed\n<b>Admin:</b> {mention_html(user.id, user.first_name)}"
+
 
     except BadRequest as e:
         # https://github.com/el0xren/tgbot/blob/773220202ea0b20137ccdd833dd97f10d0e54b83/tg_bot/modules/admin.py#L297
@@ -208,14 +208,14 @@ async def setchatpic(update: Update,
 
         await bot.set_chat_photo(chat.id, image_data)
         await msg.reply_text(
-            f"<b>{user.first_name}</b> changed the group photo."
-            if not msg.sender_chat else "Group photo has been changed.",
-            parse_mode=ParseMode.HTML)
-        log_message = (
-            f"<b>{html.escape(chat.title)}:</b>\n"
-            f"#ADMIN\nChat photo changed\n"
-            f"<b>Admin:</b> {mention_html(user.id, user.first_name)}")
-        return log_message
+            "Group photo has been changed."
+            if msg.sender_chat
+            else f"<b>{user.first_name}</b> changed the group photo.",
+            parse_mode=ParseMode.HTML,
+        )
+
+        return f"<b>{html.escape(chat.title)}:</b>\n#ADMIN\nChat photo changed\n<b>Admin:</b> {mention_html(user.id, user.first_name)}"
+
 
     except BadRequest as e:
         await msg.reply_text("An Error occurred:\n" + str(e))
@@ -235,14 +235,14 @@ async def rmchatpic(update: Update, context: CallbackContext) -> str:
     try:
         await bot.delete_chat_photo(chat.id)
         await msg.reply_text(
-            f"<b>{user.first_name}</b> deleted the group photo."
-            if not msg.sender_chat else "Group photo has been deleted.",
-            parse_mode=ParseMode.HTML)
-        log_message = (
-            f"<b>{html.escape(chat.title)}:</b>\n"
-            f"#ADMIN\nChat photo removed\n"
-            f"<b>Admin:</b> {mention_html(user.id, user.first_name)}")
-        return log_message
+            "Group photo has been deleted."
+            if msg.sender_chat
+            else f"<b>{user.first_name}</b> deleted the group photo.",
+            parse_mode=ParseMode.HTML,
+        )
+
+        return f"<b>{html.escape(chat.title)}:</b>\n#ADMIN\nChat photo removed\n<b>Admin:</b> {mention_html(user.id, user.first_name)}"
+
 
     except BadRequest as e:
         await msg.reply_text("An Error occurred:\n" + str(e))
@@ -259,9 +259,7 @@ async def set_desc(update: Update, context: CallbackContext) -> str:
     msg = update.effective_message
     user = update.effective_user
 
-    args = context.args
-
-    if args:
+    if args := context.args:
         title = "  ".join(args)
 
     if msg.reply_to_message:
@@ -280,16 +278,15 @@ async def set_desc(update: Update, context: CallbackContext) -> str:
                 "Description longer than 255 characters, Truncating it to 255 characters!"
             )
         await msg.reply_text(
-            f"<b>{user.first_name}</b> changed the group description.to:\n<b>{title[:255]}</b>"
-            if not msg.sender_chat else
-            f"Group description has been changed.to:\n<b>{title[:255]}</b>",
-            parse_mode=ParseMode.HTML)
+            f"Group description has been changed.to:\n<b>{title[:255]}</b>"
+            if msg.sender_chat
+            else f"<b>{user.first_name}</b> changed the group description.to:\n<b>{title[:255]}</b>",
+            parse_mode=ParseMode.HTML,
+        )
 
-        log_message = (
-            f"<b>{html.escape(chat.title)}:</b>\n"
-            f"#ADMIN\nChat description changed\n"
-            f"<b>Admin:</b> {mention_html(user.id, user.first_name)}")
-        return log_message
+
+        return f"<b>{html.escape(chat.title)}:</b>\n#ADMIN\nChat description changed\n<b>Admin:</b> {mention_html(user.id, user.first_name)}"
+
 
     except BadRequest as e:
         await msg.reply_text("An Error occurred:\n" + str(e))
@@ -307,9 +304,7 @@ async def setchat_title(update: Update,
     msg = update.effective_message
     user = update.effective_user
 
-    args = context.args
-
-    if args:
+    if args := context.args:
         title = "  ".join(args)
 
     if msg.reply_to_message:
@@ -328,16 +323,15 @@ async def setchat_title(update: Update,
                 "Title longer than 255 characters, Truncating it to 255 characters!"
             )
         await msg.reply_text(
-            f"<b>{user.first_name}</b> changed the group title.to:\n<b>{title[:255]}</b>"
-            if not msg.sender_chat else
-            f"Group title has been changed.to:\n<b>{title[:255]}</b>",
-            parse_mode=ParseMode.HTML)
+            f"Group title has been changed.to:\n<b>{title[:255]}</b>"
+            if msg.sender_chat
+            else f"<b>{user.first_name}</b> changed the group title.to:\n<b>{title[:255]}</b>",
+            parse_mode=ParseMode.HTML,
+        )
 
-        log_message = (
-            f"<b>{html.escape(chat.title)}:</b>\n"
-            f"#ADMIN\nChat title changed\n"
-            f"<b>Admin:</b> {mention_html(user.id, user.first_name)}")
-        return log_message
+
+        return f"<b>{html.escape(chat.title)}:</b>\n#ADMIN\nChat title changed\n<b>Admin:</b> {mention_html(user.id, user.first_name)}"
+
 
     except BadRequest as e:
         await msg.reply_text("An Error occurred:\n" + str(e))
@@ -429,7 +423,7 @@ async def promoteanon(update: Update,
     try:
         user_member = await chat.get_member(user_id)
     except Exception as e:
-        await message.reply_text("Error:\n`{}`".format(e))
+        await message.reply_text(f"Error:\n`{e}`")
         return
 
     if user_member.status == "creator":
@@ -494,15 +488,7 @@ async def promoteanon(update: Update,
             await message.reply_text("An error occurred while promoting.")
         return
 
-    log_message = (
-        f"<b>{html.escape(chat.title)}:</b>\n"
-        f"#PROMOTED\n"
-        f"Anonymous\n"
-        f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
-        f"<b>User:</b> {mention_html(user_member.user.id, user_member.user.first_name)}"
-    )
-
-    return log_message
+    return f"<b>{html.escape(chat.title)}:</b>\n#PROMOTED\nAnonymous\n<b>Admin:</b> {mention_html(user.id, user.first_name)}\n<b>User:</b> {mention_html(user_member.user.id, user_member.user.first_name)}"
 
 
 @connection_status
