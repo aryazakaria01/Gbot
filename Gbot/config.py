@@ -24,7 +24,7 @@ class Config(object):
     REM_BG_API_KEY = "http://removebg.com"
     TEMP_DOWNLOAD_DIRECTORY = ""
     EVENT_LOGS = 1001351412926  #Prints information like gbans, sudo promotes, AI enabled disable states that may help in debugging and shit
-    SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://weoqhnsa:djAEOjRGc-S12WNOc5n-OecygFuA3eCi@jelani.db.elephantsql.com/weoqhnsa' #do you hub your old heroku app database_URL then put here, most use 25days ago sql"
+    SQLALCHEMY_DATABASE_URI = "postgres://hcjfbzij:Rt4bGc1EuLvdpuoXe9jlW2mfq1iJXfY_@lallah.db.elephantsql.com/hcjfbzij"
     LOAD = [] #try to kang this db ur big mothersfuckers i know your noob so only kanging my db
     NO_LOAD = ['rss', 'cleaner', 'connection', 'math']
     WEBHOOK = None

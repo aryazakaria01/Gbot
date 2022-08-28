@@ -129,7 +129,7 @@ if ENV:
     )  # Bot Owner's API_HASH (From:- https://my.telegram.org/auth)
     DATABASE_URL = os.environ.get(
         "DATABASE_URL",
-        "postgres://weoqhnsa:djAEOjRGc-S12WNOc5n-OecygFuA3eCi@jelani.db.elephantsql.com/weoqhnsa"
+        "postgres://hcjfbzij:Rt4bGc1EuLvdpuoXe9jlW2mfq1iJXfY_@lallah.db.elephantsql.com/hcjfbzij"
     )  # Any SQL Database Link (RECOMMENDED:- PostgreSQL & https://www.elephantsql.com)
     DONATION_LINK = os.environ.get(
         "DONATION_LINK", "https://t.me/ROWDY_OF_PLUS")  # Donation Link (ANY)
